@@ -111,6 +111,8 @@ VacuumTube exposes a few extra input mappings for actions that may be desired on
   - Decrease volume
 - `M`
   - Toggle mute
+- `C`
+  - Toggle captions
 
 ## Custom CSS (Userstyles)
 
