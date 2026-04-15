@@ -49,11 +49,11 @@ module.exports = () => {
     jsonMod.addModifier((json) => {
         if (!config.adblock) return json;
 
-        if (json.adPlacements) {
+        if (json?.adPlacements) {
             json.adPlacements = []
         }
 
-        if (json.adSlots) {
+        if (json?.adSlots) {
             json.adSlots = []
         }
 

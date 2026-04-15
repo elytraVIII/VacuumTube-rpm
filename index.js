@@ -389,6 +389,7 @@ async function createWindow() {
         fullscreenable: true, //explicitly enable fullscreen functionality on macOS
         titleBarStyle: noWindowDecs ? 'hidden' : 'default',
         frame: noWindowDecs ? false : true,
+        icon: './assets/icon.png',
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: false,

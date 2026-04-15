@@ -28,12 +28,13 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="1.6.1" date="2026-03-14" type="stable">
+    <release version="1.6.2" date="2026-04-15" type="stable">
       <description>
-        <p>v1.6.1</p>
+        <p>v1.6.2</p>
         <ul>
-          <li>Fixed volume buttons not working when using cast</li>
-          <li>Fixed dislike count not showing on dislike button when Return Dislikes is enabled</li>
+          <li>Added keybind "C" to toggle captions like on desktop YouTube</li>
+          <li>Fixed app icon not showing on Wayland</li>
+          <li>Fixed rare internal modifier bug</li>
         </ul>
       </description>
     </release>
