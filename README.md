@@ -134,7 +134,7 @@ For example, putting `--disable-gpu` into the `flags.txt` file will cause Vacuum
 Your config folder is located at:
 
 - **Windows**: `%APPDATA%\VacuumTube\`
-- **Windows (Portable)**: Directory containing the portable executable
+- **Windows (Portable)**: `(executable directory)\data`
 - **macOS**: `~/Library/Application Support/VacuumTube/`
 - **Linux**: `~/.config/VacuumTube/`
 - **Linux (Flatpak)**: `~/.var/app/rocks.shy.VacuumTube/config/VacuumTube/`
