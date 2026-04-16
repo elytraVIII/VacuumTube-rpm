@@ -89,6 +89,8 @@ VacuumTube has some settings that you can change, which are located directly in 
   - Enables fullscreen, and makes VacuumTube always launch in fullscreen
 - Keep on Top
   - Enables Keep on Top, and makes VacuumTube launch with the window pinned on top of every other window
+- Pause on Blur
+  - Pause current video when VacuumTube loses focus (e.g. tabbing out or minimizing the window)
 - Custom CSS (Userstyles)
   - Enables injection of custom CSS styles. See the section below for more information
 - Controller Support
@@ -134,7 +136,7 @@ For example, putting `--disable-gpu` into the `flags.txt` file will cause Vacuum
 Your config folder is located at:
 
 - **Windows**: `%APPDATA%\VacuumTube\`
-- **Windows (Portable)**: `(executable directory)\data`
+- **Windows (Portable)**: `(executable directory)\data\`
 - **macOS**: `~/Library/Application Support/VacuumTube/`
 - **Linux**: `~/.config/VacuumTube/`
 - **Linux (Flatpak)**: `~/.var/app/rocks.shy.VacuumTube/config/VacuumTube/`
