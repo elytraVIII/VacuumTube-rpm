@@ -105,6 +105,7 @@ module.exports = async () => {
     }
 
     document.addEventListener('keydown', (e) => {
+        if (!document.body.classList.contains('WEB_PAGE_TYPE_WATCH') && !document.body.classList.contains('WEB_PAGE_TYPE_SHORTS')) return;
         if (!e.ctrlKey && !e.shiftKey && !e.metaKey && e.key?.toLowerCase() === 'c') {
             e.stopImmediatePropagation()
             e.stopPropagation()

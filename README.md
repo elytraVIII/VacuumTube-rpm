@@ -35,9 +35,12 @@ If there's anything that you think makes it look lazy or half-baked, open an iss
 If you don't know the difference, pick the Installer.
 
 - [Installer](https://github.com/shy1132/VacuumTube/releases/latest/download/VacuumTube-Setup.exe)
-- Portable:
-  - [x64 / amd64](https://github.com/shy1132/VacuumTube/releases/latest/download/VacuumTube-x64-Portable.zip)
-  - [Arm® 64](https://github.com/shy1132/VacuumTube/releases/latest/download/VacuumTube-arm64-Portable.zip)
+- Zip:
+  - [x64 / amd64](https://github.com/shy1132/VacuumTube/releases/latest/download/VacuumTube-x64.zip)
+  - [Arm® 64](https://github.com/shy1132/VacuumTube/releases/latest/download/VacuumTube-arm64.zip)
+- Portable (single-file):
+  - [x64 / amd64](https://github.com/shy1132/VacuumTube/releases/latest/download/VacuumTube-x64-Portable.exe)
+  - [Arm® 64](https://github.com/shy1132/VacuumTube/releases/latest/download/VacuumTube-arm64-Portable.exe)
 
 ### macOS
 
@@ -131,6 +134,7 @@ For example, putting `--disable-gpu` into the `flags.txt` file will cause Vacuum
 Your config folder is located at:
 
 - **Windows**: `%APPDATA%\VacuumTube\`
+- **Windows (Portable)**: Directory containing the portable executable
 - **macOS**: `~/Library/Application Support/VacuumTube/`
 - **Linux**: `~/.config/VacuumTube/`
 - **Linux (Flatpak)**: `~/.var/app/rocks.shy.VacuumTube/config/VacuumTube/`

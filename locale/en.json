@@ -69,6 +69,10 @@
             "title": "Keep on Top",
             "description": "Enables Keep on Top, and makes VacuumTube launch with the window pinned on top of every other window"
         },
+        "pause_on_blur": {
+            "title": "Pause On Blur",
+            "description": "Pause current video when VacuumTube loses focus (e.g. tabbing out or minimizing the window)"
+        },
         "userstyles": {
             "title": "Custom CSS (Userstyles)",
             "description": "Place .css files in the userstyles folder to customize the interface. Changes are applied automatically",

@@ -10,7 +10,18 @@ const package = require('./package.json')
 
 electron.app.setName('VacuumTube')
 
-const userData = electron.app.getPath('userData')
+let userData = electron.app.getPath('userData')
+
+if (
+    process.platform === 'win32' && //windows only
+    process.env.PORTABLE_EXECUTABLE_DIR && //running portable single-file build
+    !fs.existsSync(userData) //there isn't already an existing folder in the default path
+) {
+    let portablePath = path.join(process.env.PORTABLE_EXECUTABLE_DIR, 'data')
+    electron.app.setPath('userData', portablePath)
+    userData = electron.app.getPath('userData')
+}
+
 const sessionData = path.join(userData, 'sessionData')
 electron.app.setPath('sessionData', sessionData)
 

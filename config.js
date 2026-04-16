@@ -26,6 +26,7 @@ const defaults = {
     fullscreen: false, //whether or not to launch in fullscreen, changes automatically if user enters/exits fullscreen
     no_window_decorations: false, //whether or not to disable window decorations
     keep_on_top: false, //whether or not to keep window on top
+    pause_on_blur: false, //whether or not to pause video when out of focus (such as tabbing out)
     userstyles: false, //whether or not to enable custom CSS injection
     disabled_userstyles: [], //array of filenames that are disabled
     touch_overlay: true, //whether or not to enable the touch overlay interface when touch is detected

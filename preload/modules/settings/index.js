@@ -45,6 +45,7 @@ let tabs = [
     { id: 'fullscreen', func: (value) => ipcRenderer.invoke('set-fullscreen', value) },
     { id: 'no_window_decorations' },
     { id: 'keep_on_top', func: (value) => ipcRenderer.invoke('set-on-top', value) },
+    { id: 'pause_on_blur' },
     { id: 'userstyles' },
     { id: 'touch_overlay' },
     { id: 'controller_support' }
