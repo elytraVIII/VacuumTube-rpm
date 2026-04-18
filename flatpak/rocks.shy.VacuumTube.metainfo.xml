@@ -28,12 +28,12 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="1.6.3" date="2026-04-16" type="stable">
+    <release version="1.6.4" date="2026-04-17" type="stable">
       <description>
-        <p>v1.6.3</p>
+        <p>v1.6.4</p>
         <ul>
-          <li>Added "Pause on Blur" setting</li>
-          <li>The "C" character now works in search again</li>
+          <li>Updated grammar of some settings in English to be grammatically correct</li>
+          <li>Other changes not applicable to the Flatpak version</li>
         </ul>
       </description>
     </release>

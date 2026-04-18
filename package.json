@@ -1,6 +1,6 @@
 {
     "name": "vacuumtube",
-    "version": "1.6.3",
+    "version": "1.6.4",
     "description": "YouTube for TV, on your PC",
     "main": "index.js",
     "scripts": {
@@ -57,7 +57,7 @@
         },
         "win": {
             "icon": "./assets/icon.ico",
-            "artifactName": "VacuumTube-${arch}.zip",
+            "artifactName": "VacuumTube-${arch}-Portable.zip",
             "target": [
                 {
                     "target": "nsis",
@@ -72,13 +72,6 @@
                         "x64",
                         "arm64"
                     ]
-                },
-                {
-                    "target": "portable",
-                    "arch": [
-                        "x64",
-                        "arm64"
-                    ]
                 }
             ]
         },
@@ -89,9 +82,6 @@
             "allowToChangeInstallationDirectory": true,
             "allowElevation": true,
             "perMachine": false
-        },
-        "portable": {
-            "artifactName": "VacuumTube-${arch}-Portable.exe"
         },
         "mac": {
             "icon": "./assets/icon.icns",

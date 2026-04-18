@@ -35,12 +35,9 @@ If there's anything that you think makes it look lazy or half-baked, open an iss
 If you don't know the difference, pick the Installer.
 
 - [Installer](https://github.com/shy1132/VacuumTube/releases/latest/download/VacuumTube-Setup.exe)
-- Zip:
-  - [x64 / amd64](https://github.com/shy1132/VacuumTube/releases/latest/download/VacuumTube-x64.zip)
-  - [Arm® 64](https://github.com/shy1132/VacuumTube/releases/latest/download/VacuumTube-arm64.zip)
-- Portable (single-file):
-  - [x64 / amd64](https://github.com/shy1132/VacuumTube/releases/latest/download/VacuumTube-x64-Portable.exe)
-  - [Arm® 64](https://github.com/shy1132/VacuumTube/releases/latest/download/VacuumTube-arm64-Portable.exe)
+- Portable ZIP:
+  - [x64 / amd64](https://github.com/shy1132/VacuumTube/releases/latest/download/VacuumTube-x64-Portable.zip)
+  - [Arm® 64](https://github.com/shy1132/VacuumTube/releases/latest/download/VacuumTube-arm64-Portable.zip)
 
 ### macOS
 
@@ -69,7 +66,7 @@ VacuumTube has some settings that you can change, which are located directly in 
 
 - Ad Block
   - Seamlessly blocks video and feed ads, not subject to YouTube's methods of preventing blockers
-- Sponsorblock
+- SponsorBlock
   - Automatically skips sponsored segments in videos based on a [community-contributed database](https://sponsor.ajay.app/)
 - DeArrow
   - Replaces titles and thumbnails with more accurate, less sensationalized versions from a public crowdsourced database
@@ -83,20 +80,24 @@ VacuumTube has some settings that you can change, which are located directly in 
   - Forces YouTube to only stream videos in the H.264 codec (like [h264ify](https://github.com/erkserkserks/h264ify))
 - Hardware Decoding
   - Uses your GPU to decode videos when possible
+- Wayland HDR (Linux)
+  - Enables HDR on Wayland (Linux) platforms, but can cause desaturated colors on unsupported platforms. Requires up to date drivers and a compatible Wayland compositor. See [HDR - Arch Wiki](https://wiki.archlinux.org/title/HDR)
 - Low Memory Mode
   - Tells YouTube to enable it's low memory mode
 - Fullscreen
   - Enables fullscreen, and makes VacuumTube always launch in fullscreen
+- No Window Decorations
+  - Disables window decorations, including the title bar and window border
 - Keep on Top
   - Enables Keep on Top, and makes VacuumTube launch with the window pinned on top of every other window
 - Pause on Blur
   - Pause current video when VacuumTube loses focus (e.g. tabbing out or minimizing the window)
 - Custom CSS (Userstyles)
   - Enables injection of custom CSS styles. See the section below for more information
+- Touch Overlay
+  - Enables on-screen touch controls for easier navigation when touch input is detected
 - Controller Support
-  - Allows toggling of controller support in VacuumTube (on by default, can be turned off to avoid conflicting with apps like JoyToKey)
-- Wayland HDR (Linux)
-  - Enables HDR on Wayland (Linux) platforms, but can cause desaturated colors on unsupported platforms. Requires up to date drivers and a compatible Wayland compositor. See [HDR - Arch Wiki](https://wiki.archlinux.org/title/HDR)
+  - Enables support for game controllers, including navigation and video playback controls. Requires an external controller, such as an Xbox controller. Can be turned off to avoid conflicting with apps like JoyToKey
 
 ## Extra Input Mappings
 
@@ -125,7 +126,22 @@ You can apply custom styles to VacuumTube by first enabling it in the settings, 
 
 The userstyles folder is located in the config folder mentioned below.
 
-## Command Line Flags
+## VacuumTube Flags
+
+- `--version`/`-v`
+  - Prints current version and exits
+- `--portable`/`-p`
+  - Operates VacuumTube in portable mode, setting data directory to the one you specify, or defaulting to `data` in the executable directory (you can also create `portable.txt` in the executable directory, which works in the same way)
+- `--fullscreen`
+  - Forces VacuumTube to open in fullscreen
+- `--no-window-decorations`
+  - Opens VacuumTube with hidden window decorations
+- `enable-devtools`
+  - Opens VacuumTube with the Chromium developer tools open
+- `--debug-gpu`
+  - Opens chrome://gpu in VacuumTube, helpful for debugging issues
+
+## Chromium Flags
 
 You can provide extra command line flags to Chromium via the `flags.txt` file located in the config folder.
 
@@ -136,10 +152,10 @@ For example, putting `--disable-gpu` into the `flags.txt` file will cause Vacuum
 Your config folder is located at:
 
 - **Windows**: `%APPDATA%\VacuumTube\`
-- **Windows (Portable)**: `(executable directory)\data\`
 - **macOS**: `~/Library/Application Support/VacuumTube/`
 - **Linux**: `~/.config/VacuumTube/`
 - **Linux (Flatpak)**: `~/.var/app/rocks.shy.VacuumTube/config/VacuumTube/`
+- **Portable (Default)**: `(executable directory)\data\`
 
 ## Building from Source
 

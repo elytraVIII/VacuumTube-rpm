@@ -70,7 +70,7 @@
             "description": "Enables Keep on Top, and makes VacuumTube launch with the window pinned on top of every other window"
         },
         "pause_on_blur": {
-            "title": "Pause On Blur",
+            "title": "Pause on Blur",
             "description": "Pause current video when VacuumTube loses focus (e.g. tabbing out or minimizing the window)"
         },
         "userstyles": {
@@ -87,7 +87,7 @@
         },
         "controller_support": {
             "title": "Controller Support",
-            "description": "Enables support for game controllers, including navigation and video playback controls. Requires an external controller, such as an Xbox Controller"
+            "description": "Enables support for game controllers, including navigation and video playback controls. Requires an external controller, such as an Xbox controller"
         }
     },
     "sponsorblock": {

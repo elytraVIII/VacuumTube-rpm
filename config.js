@@ -70,6 +70,7 @@ function init(overrides = {}) {
         }
 
         try {
+            fs.mkdirSync(userData, { recursive: true })
             fs.writeFileSync(configFile, JSON.stringify(config, null, 4))
         } catch (err) {
             console.error('[config] failed to write config file', err)

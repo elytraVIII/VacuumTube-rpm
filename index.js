@@ -8,16 +8,14 @@ const minimist = require('minimist')
 const stringArgv = require('string-argv')
 const package = require('./package.json')
 
+const argv = minimist(process.argv)
+
 electron.app.setName('VacuumTube')
 
 let userData = electron.app.getPath('userData')
 
-if (
-    process.platform === 'win32' && //windows only
-    process.env.PORTABLE_EXECUTABLE_DIR && //running portable single-file build
-    !fs.existsSync(userData) //there isn't already an existing folder in the default path
-) {
-    let portablePath = path.join(process.env.PORTABLE_EXECUTABLE_DIR, 'data')
+let portablePath = portable()
+if (portablePath) {
     electron.app.setPath('userData', portablePath)
     userData = electron.app.getPath('userData')
 }
@@ -26,8 +24,6 @@ const sessionData = path.join(userData, 'sessionData')
 electron.app.setPath('sessionData', sessionData)
 
 const configManager = require('./config.js')
-
-const argv = minimist(process.argv)
 
 //code
 /*
@@ -494,6 +490,38 @@ async function createWindow() {
     win.webContents.on('page-title-updated', () => {
         win.setTitle('VacuumTube')
     })
+}
+
+function portable() {
+    try {
+        let exeDir;
+        if (process.platform === 'linux' && process.env.APPIMAGE) {
+            exeDir = path.dirname(process.env.APPIMAGE)
+        } else {
+            exeDir = path.dirname(electron.app.getPath('exe'))
+        }
+
+        let portablePath = null;
+        if (fs.existsSync(path.join(exeDir, './portable.txt'))) {
+            let str = fs.readFileSync(path.join(exeDir, './portable.txt'), 'utf-8')
+            if (str && str.trim().length !== 0) {
+                portablePath = str.trim()
+            } else {
+                portablePath = path.join(exeDir, 'data')
+            }
+        } else if (argv['portable'] === true || argv['p'] === true) { //arg specified, but not set to any particular path 
+            portablePath = path.join(exeDir , 'data')
+        } else if (argv['portable']) { //--portable arg specified, set to particular path
+            portablePath = argv['portable']
+        } else if (argv['p']) { //-p arg specified, set to particular path
+            portablePath = argv['p']
+        }
+
+        return portablePath;
+    } catch (err) {
+        console.error('failed to detect portable mode, assuming non-portable', err)
+        return null;
+    }
 }
 
 main()
