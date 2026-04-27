@@ -1,0 +1,75 @@
+name: Build and Release RPM
+
+permissions:
+  contents: write
+  packages: write
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g. 1.6.4)'
+        required: true
+      tag:
+        description: 'Tag name (e.g. v1.6.4)'
+        required: true
+      is_draft:
+        description: 'Create as a draft'
+        type: boolean
+        default: true
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    name: Build and Release RPM
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+  
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '23'
+          cache: 'npm'
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rpm libarchive-tools
+          npm ci
+
+      - name: Update package version (if manual)
+        if: github.event_name == 'workflow_dispatch'
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
+
+      - name: Build RPM packages
+        run: npx electron-builder --linux rpm
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Release (if manual)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          if ! gh release view ${{ github.event.inputs.tag }} > /dev/null 2>&1; then
+            DRAFT_FLAG=""
+            if [ "${{ github.event.inputs.is_draft }}" == "true" ]; then
+              DRAFT_FLAG="--draft"
+            fi
+            gh release create ${{ github.event.inputs.tag }} $DRAFT_FLAG --title "Release ${{ github.event.inputs.version }}" --notes "RPM binaries for VacuumTube v${{ github.event.inputs.version }}."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload RPM Artifacts to Release
+        run: |
+          TAG_NAME="${{ github.event.release.tag_name || github.event.inputs.tag }}"
+          
+          for f in dist/*.rpm; do
+            echo "Uploading $f..."
+            gh release upload "$TAG_NAME" "$f" --clobber
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
